@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+    <title>DAA Architect | Data & Automation</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        :root { --bg: #0b0f19; --accent: #00d2ff; --text: #e2e8f0; --subtext: #94a3b8; --card: #161e2d; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; line-height: 1.6; overflow-x: hidden; }
+        
+        section { padding: 80px 10%; position: relative; border-bottom: 1px solid #2d3748; }
+        h1, h2, h3 { font-weight: 900; text-transform: uppercase; margin: 0; }
+
+        .hero { height: 40vh; min-height: 350px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; border-bottom: none; }
+        .video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        .video-bg video { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35) grayscale(0.3); }
+        .hero h1 { font-size: 3.5rem; line-height: 0.9; margin-bottom: 20px; letter-spacing: -2px; }
+        .hero-line { font-size: 1.2rem; color: var(--subtext); max-width: 700px; border-left: 5px solid var(--accent); padding-left: 30px; }
+
+        .tech-bar { background: #0f172a; padding: 20px 10%; display: flex; justify-content: space-between; opacity: 0.6; font-weight: 800; font-size: 0.75rem; letter-spacing: 2px; color: var(--accent); border-bottom: 1px solid #2d3748; }
+
+        .section-split { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; align-items: center; margin-bottom: 50px; }
+        .content-header h2 { color: var(--accent); font-size: 2.5rem; margin-bottom: 20px; letter-spacing: -2px; }
+        .content-header p { font-size: 1.1rem; color: var(--subtext); margin-bottom: 15px; }
+
+        .swiper-container-wrap { width: 100%; max-width: 450px; justify-self: end; }
+        .swiper { width: 100%; aspect-ratio: 16 / 9; border-radius: 20px; border: 1px solid #334155; overflow: hidden; background: #000; }
+        .swiper-slide { display: flex; align-items: center; justify-content: center; position: relative; }
+        .swiper-slide::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: var(--bg-img); background-size: cover; background-position: center; filter: blur(15px) brightness(0.3); z-index: 1; }
+        .swiper-slide img { position: relative; z-index: 2; max-width: 100%; max-height: 100%; object-fit: contain; }
+        .swiper-button-next, .swiper-button-prev { color: var(--accent) !important; transform: scale(0.5); }
+
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: stretch; }
+        .stack-card { background: var(--card); padding: 40px; border-radius: 24px; border: 1px solid #2d3748; display: flex; flex-direction: column; }
+        
+        .logo-wrapper { display: flex; justify-content: center; margin-bottom: 30px; }
+        .logo-frame { display: inline-flex; align-items: center; justify-content: center; background: #ffffff; border-radius: 12px; padding: 8px 20px; height: 40px; }
+        .logo-frame img { max-height: 100%; width: auto; }
+
+        .features { list-style: none; padding: 0; margin: 0; flex-grow: 1; }
+        .features li { margin-bottom: 20px; padding-left: 30px; position: relative; font-size: 1rem; color: var(--text); }
+        .features li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-weight: 900; }
+        .features span { display: block; color: var(--subtext); font-size: 0.85rem; margin-top: 4px; line-height: 1.4; }
+        
+        .note { font-size: 0.8rem; color: var(--subtext); margin-top: 30px; padding-top: 20px; border-top: 1px solid #2d3748; font-style: italic; }
+
+        .form-wrap { max-width: 450px; margin: 0 auto; text-align: center; }
+        form { display: flex; flex-direction: column; width: 100%; }
+        input, select { width: 100%; background: #161e2d; border: 1px solid #334155; color: #fff; padding: 16px; margin-bottom: 12px; border-radius: 12px; font-family: inherit; font-size: 1rem; box-sizing: border-box; outline: none; }
+        .checkbox-container { display: flex; align-items: center; margin-bottom: 20px; cursor: pointer; font-size: 0.85rem; color: var(--subtext); text-align: left; }
+        .checkbox-container input { width: auto; margin-right: 10px; accent-color: var(--accent); }
+        .btn { background: var(--accent); color: #0b0f19; padding: 20px; border: none; font-weight: 900; width: 100%; cursor: pointer; text-transform: uppercase; border-radius: 12px; transition: 0.3s; }
+
+        @media (max-width: 1024px) { 
+            .section-split { grid-template-columns: 1fr; } 
+            .swiper-container-wrap { max-width: 100%; order: -1; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="video-bg"><video autoplay muted loop playsinline><source src="images/hero-video.mp4" type="video/mp4"></video></div>
+        <h1>DATA & PROCESS<br>ARCHITECTURE</h1>
+        <div class="hero-line">Проектируем цифровой фундамент бизнеса. Системный подход к аналитике и автоматизации.</div>
+    </section>
+
+    <div class="tech-bar">
+        <span>POWER BI</span><span>N8N</span><span>PYTHON RPA</span><span>LOOKER STUDIO</span><span>SQL</span><span>ETL</span>
+    </div>
+
+    <section id="analytics">
+        <div class="section-split">
+            <div class="content-header">
+                <h2>Интеллект данных</h2>
+                <p>«Тонкое место» любого бизнеса — это принятие решений на основе интуиции или разрозненных таблиц. Мы создаем единый орган управления данными, где каждый показатель прозрачен и проверяем.</p>
+                <p>Наша задача — автоматизировать сбор данных из всех источников (CRM, 1C, рекламные кабинеты) и превратить их в интерактивные дашборды, которые обновляются без вашего участия.</p>
+            </div>
+            <div class="swiper-container-wrap">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" style="--bg-img: url('images/pbi1.png')"><img src="images/pbi1.png"></div>
+                        <div class="swiper-slide" style="--bg-img: url('images/pbi2.png')"><img src="images/pbi2.png"></div>
+                        <div class="swiper-slide" style="--bg-img: url('images/ls1.png')"><img src="images/ls1.png"></div>
+                        <div class="swiper-slide" style="--bg-img: url('images/ls2.png')"><img src="images/ls2.png"></div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="stack-card">
+                <div class="logo-wrapper"><div class="logo-frame"><img src="images/pbi-logo.png" alt="Power BI"></div></div>
+                <ul class="features">
+                    <li>Сверхсложное моделирование<span>Использование DAX для расчетов любой вложенности: от LTV и когортного анализа до прогнозирования спроса.</span></li>
+                    <li>Корпоративная безопасность<span>Настройка Row-Level Security (RLS) — каждый сотрудник видит только те данные, к которым у него есть доступ.</span></li>
+                </ul>
+                <div class="note">* Требует платных лицензий Microsoft. Ультимативное решение для сложной аналитики и крупных компаний.</div>
+            </div>
+            <div class="stack-card">
+                <div class="logo-wrapper"><div class="logo-frame"><img src="images/ls-logo.png" alt="Looker Studio"></div></div>
+                <ul class="features">
+                    <li>Нулевые затраты на ПО<span>Инструмент полностью бесплатен, что позволяет направить бюджет на качество обработки данных, а не на лицензии.</span></li>
+                    <li>Нативная интеграция с Google<span>Идеальная работа с экосистемой: GA4, Google Ads, BigQuery и Google Таблицы «из коробки».</span></li>
+                </ul>
+                <div class="note">* Лицензионный сбор 0$. Оптимальный выбор для маркетинга, операционных отчетов и среднего бизнеса.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="automation" style="background: #0f172a;">
+        <div class="section-split">
+            <div class="content-header">
+                <h2>Автоматизация логики</h2>
+                <p>Любой повторяющийся процесс — это скрытые убытки и риск человеческой ошибки. Мы роботизируем рутину, освобождая сотрудников для стратегических задач.</p>
+                <p>Мы строим архитектуру, где сервисы общаются между собой бесшовно, данные передаются мгновенно, а сложные задачи в закрытых системах решаются программными роботами.</p>
+            </div>
+            <div class="swiper-container-wrap">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" style="--bg-img: url('images/n8n1.png')"><img src="images/n8n1.png"></div>
+                        <div class="swiper-slide" style="--bg-img: url('images/n8n2.png')"><img src="images/n8n2.png"></div>
+                        <div class="swiper-slide" style="--bg-img: url('images/pyt1.png')"><img src="images/pyt1.png"></div>
+                        <div class="swiper-slide" style="--bg-img: url('images/pyt2.png')"><img src="images/pyt2.png"></div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="stack-card">
+                <div class="logo-wrapper"><div class="logo-frame"><img src="images/n8n-logo.png" alt="n8n"></div></div>
+                <ul class="features">
+                    <li>Дирижирование данными<span>Построение сложных сценариев взаимодействия между CRM, Telegram, ERP и почтовыми сервисами.</span></li>
+                    <li>Событийный мониторинг<span>Мгновенная реакция системы на действия клиента: от регистрации до оплаты и обслуживания.</span></li>
+                </ul>
+                <div class="note">* Идеально для быстрой автоматизации современных облачных сервисов и создания бизнес-цепочек.</div>
+            </div>
+            <div class="stack-card">
+                <div class="logo-wrapper"><div class="logo-frame"><img src="images/python-logo.png" alt="Python RPA"></div></div>
+                <ul class="features">
+                    <li>Роботизация интерфейсов<span>Автоматизация действий там, где нет API: клики, заполнение форм и навигация в закрытых системах (1C, старые CRM).</span></li>
+                    <li>Custom Telegram Bots<span>Создание полноценных интерфейсов управления бизнесом внутри мессенджера через кастомный код.</span></li>
+                </ul>
+                <div class="note">* Решение для Legacy-систем и задач повышенной сложности, где бессильны стандартные интеграторы.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="form-wrap">
+            <h2>ЗАПУСТИТЬ ПРОЕКТ</h2>
+            <form action="ТВОЙ_N8N_URL" method="POST">
+                <input type="text" name="name" placeholder="Имя / Компания *" required>
+                <input type="tel" name="phone" placeholder="Телефон / WhatsApp *" required>
+                <label class="checkbox-container"><input type="checkbox" name="wa_only">Свяжитесь со мной по WhatsApp</label>
+                <select name="service" required>
+                    <option value="" disabled selected>Интересующая услуга</option>
+                    <option value="consultation">Общая консультация</option>
+                    <option value="analytics">Аналитика данных</option>
+                    <option value="automation">Автоматизация процессов</option>
+                </select>
+                <button type="submit" class="btn">Связаться со мной</button>
+            </form>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        new Swiper('.mySwiper', { 
+            loop: true, 
+            autoplay: { delay: 4000, disableOnInteraction: false }, 
+            effect: 'fade',
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
+        });
+    </script>
+</body>
+</html>
