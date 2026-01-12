@@ -51,7 +51,11 @@
         .text-gradient {
             background: linear-gradient(to right, #00d2ff, #3b82f6);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+            padding-right: 0.15em;
+            margin-right: -0.15em;
+            display: inline-block;
         }
         .swiper-button-next, .swiper-button-prev { color: #00d2ff !important; transform: scale(0.7); }
         .swiper-pagination-bullet-active { background: #00d2ff !important; }
