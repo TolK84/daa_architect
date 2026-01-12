@@ -1,200 +1,312 @@
-<!DOCTYPE HTML>
-<html lang="ru">
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DAA Architect | Data & Automation</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            cyan: '#00d2ff',
+                            dark: '#0b0f19',
+                            card: '#161e2d',
+                            border: '#334155'
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
-        :root { --bg: #0b0f19; --accent: #00d2ff; --text: #e2e8f0; --subtext: #94a3b8; --card: #161e2d; }
-        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; line-height: 1.4; overflow-x: hidden; }
-        
-        section { padding: 40px 20px; position: relative; border-bottom: 1px solid #2d3748; }
-        @media (min-width: 1024px) { section { padding: 80px 10%; } }
-        
-        h1, h2, h3 { font-weight: 900; text-transform: uppercase; margin: 0; }
-
-        .hero { min-height: 300px; padding: 60px 20px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
-        .video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-        .video-bg video { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.3); }
-        
-        .hero h1 { font-size: clamp(2rem, 10vw, 3.5rem); line-height: 1; margin-bottom: 15px; letter-spacing: -1px; }
-        .hero-line { font-size: 1rem; color: var(--subtext); max-width: 600px; border-left: 4px solid var(--accent); padding-left: 15px; }
-
-        .tech-bar { 
-            background: #0f172a; 
-            padding: 12px 10px; 
-            display: flex; 
-            flex-wrap: wrap; 
-            justify-content: center; 
-            gap: 10px 20px; 
-            font-weight: 800; 
-            font-size: 0.65rem; 
-            color: var(--accent); 
-            border-bottom: 1px solid #2d3748; 
+        body { background-color: #0b0f19; color: #e2e8f0; overflow-x: hidden; }
+        .glass-card {
+            background: rgba(22, 30, 45, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
-
-        .section-split { display: flex; flex-direction: column; gap: 30px; margin-bottom: 30px; }
-        @media (min-width: 1024px) { .section-split { flex-direction: row; align-items: center; gap: 50px; } }
-
-        .content-header h2 { color: var(--accent); font-size: clamp(1.6rem, 6vw, 2.2rem); margin-bottom: 15px; }
-        .content-header p { font-size: 0.95rem; color: var(--subtext); margin-bottom: 10px; }
-
-        .swiper-container-wrap { width: 100%; }
-        @media (min-width: 1024px) { .swiper-container-wrap { width: 450px; flex-shrink: 0; } }
-        
-        .swiper { border-radius: 12px; border: 1px solid #334155; aspect-ratio: 16/9; }
-        .swiper-slide img { max-width: 100%; max-height: 100%; object-fit: contain; }
-
-        .grid { display: flex; flex-direction: column; gap: 20px; }
-        @media (min-width: 768px) { .grid { flex-direction: row; align-items: stretch; } }
-
-        .stack-card { 
-            background: var(--card); 
-            padding: 25px; 
-            border-radius: 16px; 
-            border: 1px solid #2d3748; 
-            flex: 1; 
-            display: flex; 
-            flex-direction: column; 
+        .text-gradient {
+            background: linear-gradient(to right, #00d2ff, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        
-        .logo-wrapper { margin-bottom: 20px; display: flex; justify-content: center; }
-        .logo-frame { background: #fff; border-radius: 8px; padding: 5px 12px; height: 30px; display: flex; align-items: center; }
-        .logo-frame img { height: 100%; width: auto; }
-
-        .features { list-style: none; padding: 0; margin: 0; }
-        .features li { margin-bottom: 15px; padding-left: 20px; position: relative; font-size: 0.9rem; }
-        .features li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-weight: 900; }
-        .features span { display: block; color: var(--subtext); font-size: 0.8rem; margin-top: 2px; }
-        
-        .note { font-size: 0.75rem; color: var(--subtext); margin-top: auto; padding-top: 15px; border-top: 1px solid #2d3748; font-style: italic; }
-
-        .form-wrap { max-width: 450px; margin: 0 auto; text-align: center; }
-        form { display: flex; flex-direction: column; }
-        input, select, .btn { padding: 15px; border-radius: 10px; margin-bottom: 10px; border: 1px solid #334155; background: #161e2d; color: #fff; font-family: inherit; font-size: 0.95rem; box-sizing: border-box; }
-        .btn { background: var(--accent); color: #0b0f19; font-weight: 900; cursor: pointer; border: none; text-transform: uppercase; }
-        .checkbox-container { font-size: 0.8rem; color: var(--subtext); display: flex; align-items: center; margin-bottom: 15px; text-align: left; cursor: pointer; }
-        .checkbox-container input { width: auto; margin-right: 10px; margin-bottom: 0; }
+        .swiper-button-next, .swiper-button-prev { color: #00d2ff !important; transform: scale(0.7); }
+        .swiper-pagination-bullet-active { background: #00d2ff !important; }
+        .video-overlay {
+            background: linear-gradient(to bottom, rgba(11,15,25,0.8), rgba(11,15,25,0.95));
+        }
     </style>
 </head>
-<body>
-
-    <section class="hero">
-        <div class="video-bg"><video autoplay muted loop playsinline><source src="images/hero-video.mp4" type="video/mp4"></video></div>
-        <h1>DATA & PROCESS<br>ARCHITECTURE</h1>
-        <div class="hero-line">Проектируем цифровой фундамент бизнеса. Системный подход к аналитике и автоматизации.</div>
-    </section>
-
-    <div class="tech-bar">
-        <span>POWER BI</span><span>N8N</span><span>PYTHON RPA</span><span>LOOKER STUDIO</span><span>SQL</span><span>ETL</span>
+<body class="antialiased selection:bg-cyan-500 selection:text-white">
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob"></div>
+        <div class="absolute top-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-purple-500/10 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
     </div>
-
-    <section id="analytics">
-        <div class="section-split">
-            <div class="content-header">
-                <h2>Интеллект данных</h2>
-                <p>«Тонкое место» любого бизнеса — это принятие решений на основе интуиции или разрозненных таблиц. Мы создаем единый орган управления данными, где каждый показатель прозрачен и проверяем.</p>
-                <p>Наша задача — автоматизировать сбор данных из всех источников (CRM, 1C, рекламные кабинеты) и превратить их в интерактивные дашборды, которые обновляются без вашего участия.</p>
-            </div>
-            <div class="swiper-container-wrap">
-                <div class="swiper mySwiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="images/pbi1.png"></div>
-                        <div class="swiper-slide"><img src="images/pbi2.png"></div>
-                        <div class="swiper-slide"><img src="images/ls1.png"></div>
-                        <div class="swiper-slide"><img src="images/ls2.png"></div>
-                    </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
-            </div>
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden py-20 px-4">
+        <div class="absolute inset-0 w-full h-full z-0">
+            <div class="absolute inset-0 bg-slate-900 z-0"></div> 
+            <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-40">
+                <source src="images/hero-video.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay absolute inset-0 z-10"></div>
         </div>
-        <div class="grid">
-            <div class="stack-card">
-                <div class="logo-wrapper"><div class="logo-frame"><img src="images/pbi-logo.png" alt="Power BI"></div></div>
-                <ul class="features">
-                    <li>Сверхсложное моделирование<span>Использование DAX для расчетов любой вложенности: от LTV и когортного анализа до прогнозирования спроса.</span></li>
-                    <li>Корпоративная безопасность<span>Настройка Row-Level Security (RLS) — каждый сотрудник видит только те данные, к которым у него есть доступ.</span></li>
-                </ul>
-                <div class="note">* Требует платных лицензий Microsoft. Ультимативное решение для сложной аналитики и крупных компаний.</div>
+        <div class="relative z-20 text-center max-w-5xl mx-auto space-y-8">
+            <div data-aos="fade-down" class="inline-block px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-mono tracking-wider uppercase mb-4">
+                System Architecture v2.0
             </div>
-            <div class="stack-card">
-                <div class="logo-wrapper"><div class="logo-frame"><img src="images/ls-logo.png" alt="Looker Studio"></div></div>
-                <ul class="features">
-                    <li>Нулевые затраты на ПО<span>Инструмент полностью бесплатен, что позволяет направить бюджет на качество обработки данных, а не на лицензии.</span></li>
-                    <li>Нативная интеграция с Google<span>Идеальная работа с экосистемой: GA4, Google Ads, BigQuery и Google Таблицы «из коробки».</span></li>
-                </ul>
-                <div class="note">* Лицензионный сбор 0$. Оптимальный выбор для маркетинга, операционных отчетов и среднего бизнеса.</div>
+            <h1 data-aos="zoom-in" data-aos-delay="100" class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-tight text-white">
+                DATA & <br><span class="text-gradient">PROCESS</span> ARCHITECT
+            </h1>
+            <div data-aos="fade-up" data-aos-delay="300" class="flex flex-col items-center">
+                <p class="text-lg md:text-xl text-slate-400 max-w-2xl border-l-4 border-brand-cyan pl-6 text-left md:text-center md:border-l-0 md:border-t-4 md:pt-6">
+                    Проектируем цифровой фундамент бизнеса. Системный подход к аналитике и автоматизации.
+                </p>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="500" class="pt-8">
+                <a href="#contact" class="group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-md bg-brand-cyan px-8 font-bold text-slate-900 transition-all duration-300 hover:bg-white hover:ring-2 hover:ring-brand-cyan hover:ring-offset-2 hover:ring-offset-slate-900 focus:outline-none focus:ring-2 focus:ring-offset-2">
+                    <span class="mr-2">ОБСУДИТЬ ЗАДАЧУ</span>
+                    <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
             </div>
         </div>
     </section>
-
-    <section id="automation" style="background: #0f172a;">
-        <div class="section-split">
-            <div class="content-header">
-                <h2>Автоматизация логики</h2>
-                <p>Любой повторяющийся процесс — это скрытые убытки и риск человеческой ошибки. Мы роботизируем рутину, освобождая сотрудников для стратегических задач.</p>
-                <p>Мы строим архитектуру, где сервисы общаются между собой бесшовно, данные передаются мгновенно, а сложные задачи в закрытых системах решаются программными роботами.</p>
+    <div class="border-y border-white/5 bg-slate-950/50 backdrop-blur-sm relative z-20">
+        <div class="max-w-7xl mx-auto py-6 px-4 flex flex-wrap justify-center gap-6 md:gap-12 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+            <span class="text-sm md:text-base font-bold text-slate-300 hover:text-brand-cyan transition-colors cursor-default">POWER BI</span>
+            <span class="text-sm md:text-base font-bold text-slate-300 hover:text-brand-cyan transition-colors cursor-default">N8N</span>
+            <span class="text-sm md:text-base font-bold text-slate-300 hover:text-brand-cyan transition-colors cursor-default">PYTHON RPA</span>
+            <span class="text-sm md:text-base font-bold text-slate-300 hover:text-brand-cyan transition-colors cursor-default">LOOKER STUDIO</span>
+            <span class="text-sm md:text-base font-bold text-slate-300 hover:text-brand-cyan transition-colors cursor-default">SQL</span>
+            <span class="text-sm md:text-base font-bold text-slate-300 hover:text-brand-cyan transition-colors cursor-default">ETL</span>
+        </div>
+    </div>
+    <section id="analytics" class="py-24 px-4 md:px-8 relative z-10 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
+            <div data-aos="fade-right">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 uppercase"><span class="text-brand-cyan">Интеллект</span> данных</h2>
+                <p class="text-slate-400 text-lg mb-6 leading-relaxed">
+                    «Тонкое место» любого бизнеса — это принятие решений на основе интуиции или разрозненных таблиц. Мы создаем единый орган управления данными, где каждый показатель прозрачен и проверяем.
+                </p>
+                <p class="text-slate-400 text-lg leading-relaxed border-l-2 border-slate-700 pl-4">
+                    Наша задача — автоматизировать сбор данных из всех источников (CRM, 1C, рекламные кабинеты) и превратить их в интерактивные дашборды.
+                </p>
             </div>
-            <div class="swiper-container-wrap">
-                <div class="swiper mySwiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="images/n8n1.png"></div>
-                        <div class="swiper-slide"><img src="images/n8n2.png"></div>
-                        <div class="swiper-slide"><img src="images/pyt1.png"></div>
-                        <div class="swiper-slide"><img src="images/pyt2.png"></div>
+            <div class="w-full relative group" data-aos="fade-left">
+                <div class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative rounded-xl overflow-hidden bg-slate-900 border border-slate-700">
+                    <div class="swiper mySwiper aspect-video">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide flex items-center justify-center bg-slate-800"><img src="images/pbi1.png" class="max-w-full max-h-full object-contain" alt="Dashboard 1"></div>
+                            <div class="swiper-slide flex items-center justify-center bg-slate-800"><img src="images/pbi2.png" class="max-w-full max-h-full object-contain" alt="Dashboard 2"></div>
+                            <div class="swiper-slide flex items-center justify-center bg-slate-800"><img src="images/ls1.png" class="max-w-full max-h-full object-contain" alt="Dashboard 3"></div>
+                            <div class="swiper-slide flex items-center justify-center bg-slate-800"><img src="images/ls2.png" class="max-w-full max-h-full object-contain" alt="Dashboard 4"></div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
                     </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </div>
-        <div class="grid">
-            <div class="stack-card">
-                <div class="logo-wrapper"><div class="logo-frame"><img src="images/n8n-logo.png" alt="n8n"></div></div>
-                <ul class="features">
-                    <li>Дирижирование данными<span>Построение сложных сценариев взаимодействия между CRM, Telegram, ERP и почтовыми сервисами.</span></li>
-                    <li>Событийный мониторинг<span>Мгновенная реакция системы на действия клиента: от регистрации до оплаты и обслуживания.</span></li>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div data-aos="fade-up" data-aos-delay="100" class="glass-card rounded-2xl p-8 hover:border-brand-cyan/50 transition-colors duration-300">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="h-12 w-12 bg-white rounded flex items-center justify-center p-2">
+                        <img src="images/pbi-logo.png" alt="Power BI" class="h-full w-auto">
+                    </div>
+                    <h3 class="text-2xl font-bold">Power BI</h3>
+                </div>
+                <ul class="space-y-4">
+                    <li class="relative pl-6">
+                        <span class="absolute left-0 text-brand-cyan font-bold">→</span>
+                        <p class="text-white font-semibold">Сверхсложное моделирование</p>
+                        <p class="text-sm text-slate-400 mt-1">DAX расчеты любой вложенности: LTV, когортный анализ, прогнозирование.</p>
+                    </li>
+                    <li class="relative pl-6">
+                        <span class="absolute left-0 text-brand-cyan font-bold">→</span>
+                        <p class="text-white font-semibold">Row-Level Security (RLS)</p>
+                        <p class="text-sm text-slate-400 mt-1">Каждый сотрудник видит только свои данные.</p>
+                    </li>
                 </ul>
-                <div class="note">* Идеально для быстрой автоматизации современных облачных сервисов и создания бизнес-цепочек.</div>
+                <div class="mt-6 pt-4 border-t border-slate-700/50">
+                    <p class="text-xs text-slate-500 italic">* Требует платных лицензий Microsoft. Ультимативное решение.</p>
+                </div>
             </div>
-            <div class="stack-card">
-                <div class="logo-wrapper"><div class="logo-frame"><img src="images/python-logo.png" alt="Python RPA"></div></div>
-                <ul class="features">
-                    <li>Роботизация интерфейсов<span>Автоматизация действий там, где нет API: клики, заполнение форм и навигация в закрытых системах (1C, старые CRM).</span></li>
-                    <li>Custom Telegram Bots<span>Создание полноценных интерфейсов управления бизнесом внутри мессенджера через кастомный код.</span></li>
+            <div data-aos="fade-up" data-aos-delay="200" class="glass-card rounded-2xl p-8 hover:border-brand-cyan/50 transition-colors duration-300">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="h-12 w-12 bg-white rounded flex items-center justify-center p-2">
+                        <img src="images/ls-logo.png" alt="Looker Studio" class="h-full w-auto">
+                    </div>
+                    <h3 class="text-2xl font-bold">Looker Studio</h3>
+                </div>
+                <ul class="space-y-4">
+                    <li class="relative pl-6">
+                        <span class="absolute left-0 text-brand-cyan font-bold">→</span>
+                        <p class="text-white font-semibold">Нулевые затраты (0$)</p>
+                        <p class="text-sm text-slate-400 mt-1">Бюджет идет на качество обработки данных, а не на лицензии.</p>
+                    </li>
+                    <li class="relative pl-6">
+                        <span class="absolute left-0 text-brand-cyan font-bold">→</span>
+                        <p class="text-white font-semibold">Google Ecosystem</p>
+                        <p class="text-sm text-slate-400 mt-1">Нативная интеграция с GA4, Ads, BigQuery и Sheets.</p>
+                    </li>
                 </ul>
-                <div class="note">* Решение для Legacy-систем и задач повышенной сложности, где бессильны стандартные интеграторы.</div>
+                <div class="mt-6 pt-4 border-t border-slate-700/50">
+                    <p class="text-xs text-slate-500 italic">* Оптимальный выбор для маркетинга и малого бизнеса.</p>
+                </div>
             </div>
         </div>
     </section>
-
-    <section id="contact">
-        <div class="form-wrap">
-            <h2>ЗАПУСТИТЬ ПРОЕКТ</h2>
-            <form action="https://n8n.eurasiantech.kz/webhook/daa_support" method="POST">
-                <input type="text" name="name" placeholder="Имя / Компания *" required>
-                <input type="tel" name="phone" placeholder="Телефон / WhatsApp *" required>
-                <label class="checkbox-container"><input type="checkbox" name="wa_only">Свяжитесь со мной по WhatsApp</label>
-                <select name="service" required>
-                    <option value="" disabled selected>Интересующая услуга</option>
-                    <option value="consultation">Общая консультация</option>
-                    <option value="analytics">Аналитика данных</option>
-                    <option value="automation">Автоматизация процессов</option>
-                </select>
-                <button type="submit" class="btn">Связаться со мной</button>
+    <section id="automation" class="py-24 px-4 md:px-8 bg-slate-900/40 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
+                <div class="order-2 lg:order-1 relative group" data-aos="fade-right">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                    <div class="relative rounded-xl overflow-hidden bg-slate-900 border border-slate-700">
+                        <div class="swiper mySwiper aspect-video">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide flex items-center justify-center bg-slate-800"><img src="images/n8n1.png" class="max-w-full max-h-full object-contain"></div>
+                                <div class="swiper-slide flex items-center justify-center bg-slate-800"><img src="images/n8n2.png" class="max-w-full max-h-full object-contain"></div>
+                                <div class="swiper-slide flex items-center justify-center bg-slate-800"><img src="images/pyt1.png" class="max-w-full max-h-full object-contain"></div>
+                                <div class="swiper-slide flex items-center justify-center bg-slate-800"><img src="images/pyt2.png" class="max-w-full max-h-full object-contain"></div>
+                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2" data-aos="fade-left">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6 uppercase">Автоматизация <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Логики</span></h2>
+                    <p class="text-slate-400 text-lg mb-6 leading-relaxed">
+                        Любой повторяющийся процесс — это скрытые убытки. Мы роботизируем рутину, освобождая сотрудников для стратегических задач.
+                    </p>
+                    <p class="text-slate-400 text-lg leading-relaxed border-l-2 border-purple-500/50 pl-4">
+                        Архитектура, где сервисы общаются бесшовно, данные передаются мгновенно, а роботы делают работу в закрытых системах.
+                    </p>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div data-aos="fade-up" data-aos-delay="100" class="glass-card rounded-2xl p-8 hover:border-purple-500/50 transition-colors duration-300">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="h-12 w-12 bg-white rounded flex items-center justify-center p-2">
+                            <img src="images/n8n-logo.png" alt="n8n" class="h-full w-auto">
+                        </div>
+                        <h3 class="text-2xl font-bold">n8n Workflow</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="relative pl-6">
+                            <span class="absolute left-0 text-purple-400 font-bold">→</span>
+                            <p class="text-white font-semibold">Дирижирование данными</p>
+                            <p class="text-sm text-slate-400 mt-1">Сценарии любой сложности между CRM, Telegram, ERP и почтой.</p>
+                        </li>
+                        <li class="relative pl-6">
+                            <span class="absolute left-0 text-purple-400 font-bold">→</span>
+                            <p class="text-white font-semibold">Событийный мониторинг</p>
+                            <p class="text-sm text-slate-400 mt-1">Мгновенная реакция системы (Webhook) на действия клиента.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200" class="glass-card rounded-2xl p-8 hover:border-purple-500/50 transition-colors duration-300">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="h-12 w-12 bg-white rounded flex items-center justify-center p-2">
+                            <img src="images/python-logo.png" alt="Python" class="h-full w-auto">
+                        </div>
+                        <h3 class="text-2xl font-bold">Python RPA</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="relative pl-6">
+                            <span class="absolute left-0 text-purple-400 font-bold">→</span>
+                            <p class="text-white font-semibold">Роботизация интерфейсов</p>
+                            <p class="text-sm text-slate-400 mt-1">Клики и формы там, где нет API (1C, Legacy CRM).</p>
+                        </li>
+                        <li class="relative pl-6">
+                            <span class="absolute left-0 text-purple-400 font-bold">→</span>
+                            <p class="text-white font-semibold">Custom Bots</p>
+                            <p class="text-sm text-slate-400 mt-1">Полноценные интерфейсы управления бизнесом внутри Telegram.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="py-24 px-4 relative z-10">
+        <div class="max-w-2xl mx-auto glass-card rounded-3xl p-8 md:p-12 relative overflow-hidden" data-aos="zoom-in">
+             <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-brand-cyan/20 rounded-full blur-3xl"></div>
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-black uppercase mb-4">Запустить проект</h2>
+                <p class="text-slate-400">Оставьте заявку, и мы обсудим архитектуру вашего решения.</p>
+            </div>
+            <form action="https://n8n.eurasiantech.kz/webhook/daa_support" method="POST" class="space-y-5">
+                <div>
+                    <input type="text" name="name" placeholder="Имя / Компания *" required 
+                        class="w-full bg-slate-900/80 border border-slate-700 rounded-lg px-5 py-4 text-white placeholder-slate-500 focus:outline-none focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan transition-all">
+                </div>
+                <div>
+                    <input type="tel" name="phone" placeholder="Телефон / WhatsApp *" required 
+                        class="w-full bg-slate-900/80 border border-slate-700 rounded-lg px-5 py-4 text-white placeholder-slate-500 focus:outline-none focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan transition-all">
+                </div>
+                <label class="flex items-center cursor-pointer group">
+                    <div class="relative">
+                        <input type="checkbox" name="wa_only" class="sr-only peer">
+                        <div class="w-5 h-5 border-2 border-slate-600 rounded bg-slate-900 peer-checked:bg-brand-cyan peer-checked:border-brand-cyan transition-all"></div>
+                        <svg class="absolute top-1 left-1 w-3 h-3 text-slate-900 hidden peer-checked:block pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <span class="ml-3 text-sm text-slate-400 group-hover:text-slate-300 transition-colors">Свяжитесь со мной по WhatsApp</span>
+                </label>
+                <div class="relative">
+                    <select name="service" required class="w-full bg-slate-900/80 border border-slate-700 rounded-lg px-5 py-4 text-white appearance-none focus:outline-none focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan transition-all cursor-pointer">
+                        <option value="" disabled selected>Интересующая услуга</option>
+                        <option value="consultation">Общая консультация</option>
+                        <option value="analytics">Аналитика данных</option>
+                        <option value="automation">Автоматизация процессов</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-brand-cyan text-slate-900 font-black uppercase tracking-wide py-4 rounded-lg hover:bg-white hover:shadow-[0_0_20px_rgba(0,210,255,0.5)] transition-all duration-300 transform hover:-translate-y-1">
+                    Связаться со мной
+                </button>
             </form>
         </div>
     </section>
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50,
+            easing: 'ease-out-cubic'
+        });
         new Swiper('.mySwiper', { 
             loop: true, 
             autoplay: { delay: 4000, disableOnInteraction: false }, 
             effect: 'fade',
+            fadeEffect: { crossFade: true },
             navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
         });
     </script>
