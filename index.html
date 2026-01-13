@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAA Architect | Data & Automation</title>
+    <title>Бизнес-аналитика и Автоматизация | ЕвразианТек</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -64,8 +64,8 @@
         }
         .swiper-button-next, .swiper-button-prev { color: #00d2ff !important; transform: scale(0.7); }
         .swiper-pagination-bullet-active { background: #00d2ff !important; }
-        .video-overlay {
-            background: linear-gradient(to bottom, rgba(11,15,25,0.8), rgba(11,15,25,0.95));
+        .video-fallback {
+            background: radial-gradient(circle at center, #1e293b 0%, #0b0f19 100%);
         }
     </style>
 </head>
@@ -74,24 +74,24 @@
     <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
         <div class="absolute top-0 left-1/4 w-72 h-72 md:w-96 md:h-96 bg-cyan-500/10 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob"></div>
         <div class="absolute top-0 right-1/4 w-72 h-72 md:w-96 md:h-96 bg-blue-600/10 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-        <div class="absolute -bottom-32 left-1/3 w-72 h-72 md:w-96 md:h-96 bg-purple-500/10 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
     </div>
 
     <nav class="fixed w-full z-50 nav-glass transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 md:h-20">
-                <a href="https://eurasiantech.kz" target="_blank" class="flex-shrink-0 flex items-center gap-2 cursor-pointer hover:opacity-80 transition">
-                    <div class="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded flex items-center justify-center text-white font-bold text-lg md:text-xl shadow-[0_0_15px_rgba(0,210,255,0.3)]">E</div>
+                <a href="https://eurasiantech.kz" target="_blank" class="flex-shrink-0 flex items-center gap-3 cursor-pointer hover:opacity-80 transition">
+                    <img src="images/logo.png" alt="ЕвразианТек Logo" class="h-8 md:h-10 w-auto object-contain">
+                    
                     <div class="flex flex-col">
-                        <span class="font-bold text-lg leading-tight text-white tracking-wide">DAA <span class="text-brand-cyan">Architect</span></span>
-                        <span class="text-[10px] text-slate-400 uppercase tracking-wider">by EurasianTech</span>
+                        <span class="font-bold text-lg leading-tight text-white tracking-wide">ЕвразианТек <span class="text-brand-cyan">| Analytics</span></span>
                     </div>
                 </a>
                 
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#analytics" class="text-slate-300 hover:text-brand-cyan px-3 py-2 rounded-md text-sm font-medium transition-colors">Аналитика</a>
-                        <a href="#automation" class="text-slate-300 hover:text-brand-cyan px-3 py-2 rounded-md text-sm font-medium transition-colors">Автоматизация</a>
+                        <a href="#services" class="text-slate-300 hover:text-brand-cyan px-3 py-2 rounded-md text-sm font-medium transition-colors">Услуги</a>
+                        <a href="#approach" class="text-slate-300 hover:text-brand-cyan px-3 py-2 rounded-md text-sm font-medium transition-colors">Подход</a>
+                        <a href="#steps" class="text-slate-300 hover:text-brand-cyan px-3 py-2 rounded-md text-sm font-medium transition-colors">Этапы</a>
                         <a href="#contact" class="bg-white/5 hover:bg-brand-cyan/20 text-brand-cyan border border-brand-cyan/50 px-4 py-2 rounded-md text-sm font-bold transition-all hover:shadow-[0_0_10px_rgba(0,210,255,0.2)]">Обсудить проект</a>
                     </div>
                 </div>
@@ -108,41 +108,41 @@
 
         <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#analytics" class="text-slate-300 hover:text-brand-cyan block px-3 py-2 rounded-md text-base font-medium">Аналитика</a>
-                <a href="#automation" class="text-slate-300 hover:text-brand-cyan block px-3 py-2 rounded-md text-base font-medium">Автоматизация</a>
+                <a href="#services" class="text-slate-300 hover:text-brand-cyan block px-3 py-2 rounded-md text-base font-medium">Услуги</a>
+                <a href="#approach" class="text-slate-300 hover:text-brand-cyan block px-3 py-2 rounded-md text-base font-medium">Подход</a>
+                <a href="#steps" class="text-slate-300 hover:text-brand-cyan block px-3 py-2 rounded-md text-base font-medium">Этапы</a>
                 <a href="#contact" class="text-brand-cyan font-bold block px-3 py-2 rounded-md text-base">Обсудить проект</a>
             </div>
         </div>
     </nav>
 
-    <section class="relative min-h-[100vh] flex items-center justify-center overflow-hidden py-16 px-4 pt-20">
+    <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-16 px-4 pt-20 video-fallback">
         <div class="absolute inset-0 w-full h-full z-0">
-            <div class="absolute inset-0 bg-slate-900 z-0"></div> 
-            <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-slate-900/60 z-0"></div> 
+            <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-30">
                 <source src="images/hero-video.mp4" type="video/mp4">
             </video>
-            <div class="video-overlay absolute inset-0 z-10"></div>
         </div>
 
         <div class="relative z-20 text-center max-w-5xl mx-auto space-y-6 md:space-y-8">
             <div data-aos="fade-down" class="inline-block px-3 py-1 md:px-4 md:py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-[10px] md:text-xs font-mono tracking-wider uppercase mb-2 md:mb-4">
-                System Architecture v2.0
+                EurasianTech Analytic Division
             </div>
             
-            <h1 data-aos="zoom-in" data-aos-delay="100" class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none text-white">
-                DATA & <br><span class="text-gradient">PROCESS</span> ARCHITECT
+            <h1 data-aos="zoom-in" data-aos-delay="100" class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tighter leading-tight text-white">
+                Внедрение систем <span class="text-gradient">бизнес-аналитики</span><br>и программная роботизация
             </h1>
             
             <div data-aos="fade-up" data-aos-delay="300" class="flex flex-col items-center px-2">
-                <p class="text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl border-l-4 border-brand-cyan pl-4 md:pl-0 md:border-l-0 md:border-t-4 md:pt-6 text-left md:text-center">
-                    Проектируем цифровой фундамент бизнеса. Системный подход к аналитике и автоматизации.
+                <p class="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl text-center leading-relaxed">
+                    Аналитическое подразделение компании <strong>«ЕвразианТек»</strong>. Внедряем отчетность и автоматизацию, помогая бизнесу принимать решения на основе данных и исключая ручной труд в операционных процессах.
                 </p>
             </div>
 
             <div data-aos="fade-up" data-aos-delay="500" class="pt-6 md:pt-8">
-                <a href="#contact" class="group relative inline-flex h-12 md:h-14 items-center justify-center overflow-hidden rounded-md bg-brand-cyan px-6 md:px-8 font-bold text-slate-900 transition-all duration-300 hover:bg-white hover:ring-2 hover:ring-brand-cyan hover:ring-offset-2 hover:ring-offset-slate-900 focus:outline-none focus:ring-2 focus:ring-offset-2 text-sm md:text-base">
-                    <span class="mr-2">ОБСУДИТЬ ЗАДАЧУ</span>
-                    <svg class="h-4 w-4 md:h-5 md:w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                <a href="#services" class="group relative inline-flex h-12 md:h-14 items-center justify-center overflow-hidden rounded-md bg-brand-cyan px-6 md:px-8 font-bold text-slate-900 transition-all duration-300 hover:bg-white hover:ring-2 hover:ring-brand-cyan hover:ring-offset-2 hover:ring-offset-slate-900 focus:outline-none focus:ring-2 focus:ring-offset-2 text-sm md:text-base">
+                    <span class="mr-2 uppercase">Что мы предлагаем</span>
+                    <svg class="h-4 w-4 md:h-5 md:w-5 transition-transform group-hover:translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
                 </a>
             </div>
         </div>
@@ -150,34 +150,84 @@
 
     <div class="border-y border-white/5 bg-slate-950/50 backdrop-blur-sm relative z-20">
         <div class="max-w-7xl mx-auto py-4 md:py-6 px-4 flex flex-wrap justify-center gap-4 md:gap-12 opacity-70">
-            <span class="text-xs md:text-base font-bold text-slate-300 hover:text-brand-cyan transition cursor-default">POWER BI</span>
-            <span class="text-xs md:text-base font-bold text-slate-300 hover:text-brand-cyan transition cursor-default">N8N</span>
-            <span class="text-xs md:text-base font-bold text-slate-300 hover:text-brand-cyan transition cursor-default">PYTHON RPA</span>
-            <span class="text-xs md:text-base font-bold text-slate-300 hover:text-brand-cyan transition cursor-default">LOOKER STUDIO</span>
-            <span class="text-xs md:text-base font-bold text-slate-300 hover:text-brand-cyan transition cursor-default">SQL</span>
-            <span class="text-xs md:text-base font-bold text-slate-300 hover:text-brand-cyan transition cursor-default">ETL</span>
+            <span class="text-xs md:text-sm font-bold text-slate-300 tracking-widest">POWER BI</span>
+            <span class="text-xs md:text-sm font-bold text-slate-300 tracking-widest">LOOKER STUDIO</span>
+            <span class="text-xs md:text-sm font-bold text-slate-300 tracking-widest">N8N</span>
+            <span class="text-xs md:text-sm font-bold text-slate-300 tracking-widest">PYTHON RPA</span>
+            <span class="text-xs md:text-sm font-bold text-slate-300 tracking-widest">SQL</span>
         </div>
     </div>
 
-    <section id="analytics" class="py-16 md:py-24 px-4 md:px-8 relative z-10 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center mb-12 md:mb-20">
-            <div data-aos="fade-right">
-                <h2 class="text-3xl md:text-5xl font-black mb-4 md:mb-6 uppercase"><span class="text-brand-cyan">Интеллект</span> данных</h2>
-                <p class="text-slate-400 text-base md:text-lg mb-4 md:mb-6 leading-relaxed">
-                    «Тонкое место» бизнеса — решения на основе интуиции. Мы создаем единый орган управления данными.
-                </p>
-                <p class="text-slate-400 text-base md:text-lg leading-relaxed border-l-2 border-slate-700 pl-4">
-                    Автоматизируем сбор данных из CRM, 1C, рекламы и превращаем их в интерактивные дашборды.
-                </p>
-            </div>
-            
-            <div class="w-full relative group" data-aos="fade-left">
-                <div class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur opacity-25"></div>
-                <div class="relative rounded-xl overflow-hidden bg-slate-900 border border-slate-700">
-                    <div class="swiper mySwiper aspect-video w-full">
+    <section id="services" class="py-20 px-4 md:px-8 relative z-10 max-w-7xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-black mb-4 uppercase">Наши <span class="text-brand-cyan">Услуги</span></h2>
+            <p class="text-slate-400">Комплексная оцифровка вашего бизнеса</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div data-aos="fade-up" data-aos-delay="100" class="glass-card rounded-2xl p-8 hover:bg-slate-800/50 transition group relative overflow-hidden flex flex-col">
+                <span class="absolute top-0 right-0 p-4 text-7xl font-black text-slate-800/40 select-none z-0 leading-none">01</span>
+                
+                <div class="relative z-10 mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-white">Отчетность и аналитика</h3>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        Разрабатываем единую систему показателей для управления компанией.
+                    </p>
+                    
+                    <div class="mb-6 p-4 bg-slate-900/80 rounded-lg border border-slate-700">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-wide block mb-2">Решение</span>
+                        <p class="text-sm text-slate-300">
+                            Консолидация данных из 1С, CRM, SQL и Excel в единое хранилище. Настройка интерактивных отчетов для мониторинга продаж, финансов и производства в режиме реального времени.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-bold rounded">Microsoft Power BI</span>
+                        <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 text-xs font-bold rounded">Google Looker Studio</span>
+                    </div>
+                </div>
+
+                <div class="relative z-10 mt-auto rounded-xl overflow-hidden border border-slate-700 bg-slate-900/50 shadow-lg">
+                    <div class="swiper serviceSwiper aspect-video w-full">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide flex items-center justify-center bg-slate-800 text-slate-500">DAASHBOARD 1</div>
-                            <div class="swiper-slide flex items-center justify-center bg-slate-800 text-slate-500">DAASHBOARD 2</div>
+                            <div class="swiper-slide flex items-center justify-center bg-slate-800"><img src="images/pbi1.png" class="w-full h-full object-cover"></div>
+                            <div class="swiper-slide flex items-center justify-center bg-slate-800"><img src="images/pbi2.png" class="w-full h-full object-cover"></div>
+                            <div class="swiper-slide flex items-center justify-center bg-slate-800"><img src="images/ls1.png" class="w-full h-full object-cover"></div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="200" class="glass-card rounded-2xl p-8 hover:bg-slate-800/50 transition group relative overflow-hidden flex flex-col">
+                 <span class="absolute top-0 right-0 p-4 text-7xl font-black text-slate-800/40 select-none z-0 leading-none">02</span>
+
+                <div class="relative z-10 mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-white">Автоматизация и RPA</h3>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        Связываем информационные системы и внедряем программных роботов.
+                    </p>
+                    
+                    <div class="mb-6 p-4 bg-slate-900/80 rounded-lg border border-slate-700">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-wide block mb-2">Решение</span>
+                        <p class="text-sm text-slate-300">
+                            Настройка автоматического обмена данными между корпоративными сервисами. Разработка скриптов для выполнения рутинных операций: обработка заявок, формирование документов, парсинг данных.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-pink-500/10 border border-pink-500/30 text-pink-400 text-xs font-bold rounded">n8n</span>
+                        <span class="px-3 py-1 bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-bold rounded">Python (RPA)</span>
+                    </div>
+                </div>
+
+                <div class="relative z-10 mt-auto rounded-xl overflow-hidden border border-slate-700 bg-slate-900/50 shadow-lg">
+                    <div class="swiper serviceSwiper aspect-video w-full">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide flex items-center justify-center bg-slate-800"><img src="images/n8n1.png" class="w-full h-full object-cover"></div>
+                            <div class="swiper-slide flex items-center justify-center bg-slate-800"><img src="images/n8n2.png" class="w-full h-full object-cover"></div>
+                            <div class="swiper-slide flex items-center justify-center bg-slate-800"><img src="images/pyt1.png" class="w-full h-full object-cover"></div>
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
@@ -185,121 +235,64 @@
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            <div data-aos="fade-up" data-aos-delay="100" class="glass-card rounded-2xl p-6 md:p-8 hover:bg-slate-800/50 transition">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="h-12 w-12 md:h-14 md:w-14 bg-white rounded flex items-center justify-center p-1.5 flex-shrink-0">
-                         <span class="text-black font-bold">PBI</span>
-                    </div>
-                    <h3 class="text-xl md:text-2xl font-bold">Power BI</h3>
-                </div>
-                <ul class="space-y-4">
-                    <li class="relative pl-6">
-                        <span class="absolute left-0 text-brand-cyan font-bold">→</span>
-                        <p class="text-white font-semibold text-sm md:text-base">Сверхсложное моделирование</p>
-                        <p class="text-xs md:text-sm text-slate-400 mt-1">DAX расчеты любой вложенности: LTV, когортный анализ.</p>
-                    </li>
-                    <li class="relative pl-6">
-                        <span class="absolute left-0 text-brand-cyan font-bold">→</span>
-                        <p class="text-white font-semibold text-sm md:text-base">Row-Level Security (RLS)</p>
-                        <p class="text-xs md:text-sm text-slate-400 mt-1">Персональный доступ к данным для каждого сотрудника.</p>
-                    </li>
-                </ul>
+    <section id="approach" class="py-20 px-4 md:px-8 bg-slate-900/50 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-black mb-4 uppercase">Подход к <span class="text-brand-cyan">Работе</span></h2>
+                <p class="text-slate-400">Используем технологические стандарты «ЕвразианТек»</p>
             </div>
-
-            <div data-aos="fade-up" data-aos-delay="200" class="glass-card rounded-2xl p-6 md:p-8 hover:bg-slate-800/50 transition">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="h-12 w-12 md:h-14 md:w-14 bg-white rounded flex items-center justify-center p-1.5 flex-shrink-0">
-                        <span class="text-blue-500 font-bold">LS</span>
-                    </div>
-                    <h3 class="text-xl md:text-2xl font-bold">Looker Studio</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div data-aos="fade-up" data-aos-delay="100" class="border border-slate-800 bg-slate-900 p-6 rounded-xl hover:border-brand-cyan/50 transition duration-300">
+                    <h4 class="text-xl font-bold mb-3 text-brand-cyan">Системность</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">Выстраиваем масштабируемую архитектуру данных, а не просто визуализируем таблицы.</p>
                 </div>
-                <ul class="space-y-4">
-                    <li class="relative pl-6">
-                        <span class="absolute left-0 text-brand-cyan font-bold">→</span>
-                        <p class="text-white font-semibold text-sm md:text-base">Нулевые затраты (0$)</p>
-                        <p class="text-xs md:text-sm text-slate-400 mt-1">Бюджет идет на качество данных, а не лицензии.</p>
-                    </li>
-                    <li class="relative pl-6">
-                        <span class="absolute left-0 text-brand-cyan font-bold">→</span>
-                        <p class="text-white font-semibold text-sm md:text-base">Google Ecosystem</p>
-                        <p class="text-xs md:text-sm text-slate-400 mt-1">Нативная интеграция с GA4, Ads, BigQuery.</p>
-                    </li>
-                </ul>
+                <div data-aos="fade-up" data-aos-delay="200" class="border border-slate-800 bg-slate-900 p-6 rounded-xl hover:border-brand-cyan/50 transition duration-300">
+                    <h4 class="text-xl font-bold mb-3 text-brand-cyan">Безопасность</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">Соблюдаем корпоративные стандарты конфиденциальности и защиты данных.</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="300" class="border border-slate-800 bg-slate-900 p-6 rounded-xl hover:border-brand-cyan/50 transition duration-300">
+                    <h4 class="text-xl font-bold mb-3 text-brand-cyan">Прозрачность</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">Работаем по четкому техническому заданию (ТЗ) с фиксацией этапов и результатов.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="automation" class="py-16 md:py-24 px-4 md:px-8 bg-slate-900/40 relative z-10">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center mb-12 md:mb-20">
-                <div class="order-2 lg:order-1 relative group" data-aos="fade-right">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl blur opacity-25"></div>
-                    <div class="relative rounded-xl overflow-hidden bg-slate-900 border border-slate-700">
-                        <div class="swiper mySwiper aspect-video w-full">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide flex items-center justify-center bg-slate-800 text-slate-500">WORKFLOW 1</div>
-                                <div class="swiper-slide flex items-center justify-center bg-slate-800 text-slate-500">CODE 2</div>
-                            </div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
-                        </div>
-                    </div>
-                </div>
+    <section id="steps" class="py-20 px-4 md:px-8 relative z-10 max-w-7xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-black mb-4 uppercase">Этапы <span class="text-brand-cyan">Реализации</span></h2>
+        </div>
 
-                <div class="order-1 lg:order-2" data-aos="fade-left">
-                    <h2 class="text-3xl md:text-5xl font-black mb-4 md:mb-6 uppercase">Автоматизация <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Логики</span></h2>
-                    <p class="text-slate-400 text-base md:text-lg mb-4 md:mb-6 leading-relaxed">
-                        Повторяющиеся процессы — это убытки. Мы роботизируем рутину, освобождая время для стратегии.
-                    </p>
-                    <p class="text-slate-400 text-base md:text-lg leading-relaxed border-l-2 border-purple-500/50 pl-4">
-                        Архитектура, где сервисы общаются бесшовно, а роботы работают в закрытых системах.
-                    </p>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="relative pl-6 border-l-2 border-slate-700 hover:border-brand-cyan transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                <span class="text-5xl font-black text-slate-800 absolute -top-4 -left-2 z-0 opacity-50">01</span>
+                <div class="relative z-10">
+                    <h4 class="text-lg font-bold text-white mb-2">Обследование</h4>
+                    <p class="text-sm text-slate-400">Аудит бизнес-процессов и источников данных.</p>
                 </div>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                <div data-aos="fade-up" data-aos-delay="100" class="glass-card rounded-2xl p-6 md:p-8 hover:bg-slate-800/50 transition">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="h-12 w-12 md:h-14 md:w-14 bg-white rounded flex items-center justify-center p-1.5 flex-shrink-0">
-                            <span class="text-pink-600 font-bold">n8n</span>
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-bold">n8n Workflow</h3>
-                    </div>
-                    <ul class="space-y-4">
-                        <li class="relative pl-6">
-                            <span class="absolute left-0 text-purple-400 font-bold">→</span>
-                            <p class="text-white font-semibold text-sm md:text-base">Дирижирование данными</p>
-                            <p class="text-xs md:text-sm text-slate-400 mt-1">Сценарии любой сложности между CRM, Telegram, ERP.</p>
-                        </li>
-                        <li class="relative pl-6">
-                            <span class="absolute left-0 text-purple-400 font-bold">→</span>
-                            <p class="text-white font-semibold text-sm md:text-base">Webhook & Events</p>
-                            <p class="text-xs md:text-sm text-slate-400 mt-1">Мгновенная реакция системы на действия клиента.</p>
-                        </li>
-                    </ul>
+            <div class="relative pl-6 border-l-2 border-slate-700 hover:border-brand-cyan transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                <span class="text-5xl font-black text-slate-800 absolute -top-4 -left-2 z-0 opacity-50">02</span>
+                <div class="relative z-10">
+                    <h4 class="text-lg font-bold text-white mb-2">Проектирование</h4>
+                    <p class="text-sm text-slate-400">Разработка ТЗ и прототипов системы.</p>
                 </div>
-
-                <div data-aos="fade-up" data-aos-delay="200" class="glass-card rounded-2xl p-6 md:p-8 hover:bg-slate-800/50 transition">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="h-12 w-12 md:h-14 md:w-14 bg-white rounded flex items-center justify-center p-1.5 flex-shrink-0">
-                             <span class="text-yellow-600 font-bold">Py</span>
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-bold">Python RPA</h3>
-                    </div>
-                    <ul class="space-y-4">
-                        <li class="relative pl-6">
-                            <span class="absolute left-0 text-purple-400 font-bold">→</span>
-                            <p class="text-white font-semibold text-sm md:text-base">Роботизация интерфейсов</p>
-                            <p class="text-xs md:text-sm text-slate-400 mt-1">Клики и формы там, где нет API (Legacy soft).</p>
-                        </li>
-                        <li class="relative pl-6">
-                            <span class="absolute left-0 text-purple-400 font-bold">→</span>
-                            <p class="text-white font-semibold text-sm md:text-base">Custom Bots</p>
-                            <p class="text-xs md:text-sm text-slate-400 mt-1">Управление бизнесом через Telegram ботов.</p>
-                        </li>
-                    </ul>
+            </div>
+            <div class="relative pl-6 border-l-2 border-slate-700 hover:border-brand-cyan transition duration-300" data-aos="fade-up" data-aos-delay="300">
+                <span class="text-5xl font-black text-slate-800 absolute -top-4 -left-2 z-0 opacity-50">03</span>
+                <div class="relative z-10">
+                    <h4 class="text-lg font-bold text-white mb-2">Разработка</h4>
+                    <p class="text-sm text-slate-400">Написание кода, настройка интеграций и верстка отчетов.</p>
+                </div>
+            </div>
+            <div class="relative pl-6 border-l-2 border-slate-700 hover:border-brand-cyan transition duration-300" data-aos="fade-up" data-aos-delay="400">
+                <span class="text-5xl font-black text-slate-800 absolute -top-4 -left-2 z-0 opacity-50">04</span>
+                <div class="relative z-10">
+                    <h4 class="text-lg font-bold text-white mb-2">Сопровождение</h4>
+                    <p class="text-sm text-slate-400">Техническая поддержка и развитие решений.</p>
                 </div>
             </div>
         </div>
@@ -310,7 +303,7 @@
              <div class="absolute top-0 right-0 -mt-10 -mr-10 w-32 h-32 md:w-40 md:h-40 bg-brand-cyan/20 rounded-full blur-3xl"></div>
 
             <div class="text-center mb-8 md:mb-10">
-                <h2 class="text-2xl md:text-4xl font-black uppercase mb-3">Запустить проект</h2>
+                <h2 class="text-2xl md:text-3xl font-black uppercase mb-3 text-white">Обсудить проект</h2>
                 <p class="text-slate-400 text-sm md:text-base">Оставьте заявку, и мы обсудим архитектуру вашего решения.</p>
             </div>
 
@@ -336,9 +329,9 @@
                 <div class="relative">
                     <select name="service" required class="w-full bg-slate-900/80 border border-slate-700 rounded-lg px-4 py-3 md:px-5 md:py-4 text-white text-sm md:text-base appearance-none focus:outline-none focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan transition-all cursor-pointer">
                         <option value="" disabled selected>Интересующая услуга</option>
-                        <option value="consultation">Общая консультация</option>
-                        <option value="analytics">Аналитика данных</option>
-                        <option value="automation">Автоматизация процессов</option>
+                        <option value="analytics">Бизнес-аналитика (BI)</option>
+                        <option value="automation">Автоматизация (RPA/n8n)</option>
+                        <option value="consultation">Консультация</option>
                     </select>
                     <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -346,7 +339,7 @@
                 </div>
 
                 <button type="submit" class="w-full bg-brand-cyan text-slate-900 font-black uppercase tracking-wide py-3 md:py-4 rounded-lg hover:bg-white hover:shadow-[0_0_20px_rgba(0,210,255,0.5)] transition-all duration-300 transform hover:-translate-y-1 text-sm md:text-base">
-                    Связаться со мной
+                    Отправить заявку
                 </button>
             </form>
         </div>
@@ -357,11 +350,11 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div>
                     <a href="https://eurasiantech.kz" target="_blank" class="font-bold text-xl tracking-tight text-white block mb-4 hover:text-blue-400 transition inline-flex items-center gap-2">
-                        <span>DAA Architect</span>
-                        <span class="text-slate-500 text-sm font-normal">| part of EurasianTech</span>
+                        <span>ЕвразианТек</span>
+                        <span class="text-slate-500 text-sm font-normal">| Analytics</span>
                     </a>
                     <p class="text-sm text-slate-400 max-w-xs leading-relaxed">
-                        Мы строим системы, которые превращают хаос данных в четкие алгоритмы принятия решений.
+                        Помогаем бизнесу принимать решения на основе данных и исключаем ручной труд в операционных процессах.
                     </p>
                 </div>
                 <div class="md:text-right text-sm text-slate-400">
@@ -374,10 +367,9 @@
                 </div>
             </div>
             <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-600">
-                <p>&copy; 2026 EurasianTech. All rights reserved.</p>
+                <p>&copy; 2026 ЕвразианТек. Все права защищены.</p>
                 <div class="flex gap-4 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-slate-400 transition">Privacy Policy</a>
-                    <a href="#" class="hover:text-slate-400 transition">Terms of Service</a>
+                    <a href="#" class="hover:text-slate-400 transition">Политика конфиденциальности</a>
                 </div>
             </div>
         </div>
@@ -392,7 +384,7 @@
             offset: 30,
             easing: 'ease-out-cubic'
         });
-        new Swiper('.mySwiper', { 
+        new Swiper('.serviceSwiper', { 
             loop: true, 
             autoplay: { delay: 4000, disableOnInteraction: false }, 
             effect: 'fade',
